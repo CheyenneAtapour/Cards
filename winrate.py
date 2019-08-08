@@ -4,8 +4,6 @@
 # ~ 16 games to advance in legend with 70% winrate
 # about the same for 80%
 
-# one more koaki, one more treacherous in bandit keith Leng LING
-
 import random
 
 count = 0
