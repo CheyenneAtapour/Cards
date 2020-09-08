@@ -1,3 +1,5 @@
+# Yugioh Duel Links rank monte carlo sim
+
 # ~ 13 games to advance in plat (4 winstreak) with a 70% winrate
 # ~ 12 games to advance in plat with an 80% winrate
 
