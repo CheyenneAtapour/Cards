@@ -8,7 +8,7 @@
 # when you first enter a new rank, you start with 1 star in that rank ? 
 # you cannot fall below rank 10 of a new medal rank, and you cannot fall below 5 of a medal rank either
 
-# ranks are bronze, silver, gold, platinum, diamond, then legend, all 10-1
+# ranks are bronze, silver, gold, platinum, diamond, then legend, all with positions 10-1
 # each rank has 3 stars to earn
 
 # you get 3 stars in your rank, then your next win will get you the next rank with 1 star
@@ -16,10 +16,10 @@
 
 import random
 
-WINRATE = 78
+WINRATE = 67
 
-STARTING_RANK = 3
-STARTING_POSITION = 8
+STARTING_RANK = 4
+STARTING_POSITION = 2
 STARTING_STARS = 1
 STARTING_WINSTREAK = 0
 #STAR_BONUS = 0
@@ -135,5 +135,5 @@ def findStarsLeft():
 	rank = Rank()
 	print(rank.starsLeft())
 
-#monteCarlo()
-findStarsLeft()
+monteCarlo()
+#findStarsLeft()
