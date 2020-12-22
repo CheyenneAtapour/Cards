@@ -3,7 +3,7 @@
 import random
 
 WINRATE = 70
-STARTRANK = 27256
+STARTRANK = 50000
 
 def monteCarlo():
 	avg = 0
