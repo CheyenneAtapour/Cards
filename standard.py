@@ -37,14 +37,40 @@ deck = shuffle(deck)
 # Returns a hand of the drawn cards
 def draw(num=1, deck=deck):
 	hand = deck[0:num]
-	for x in range(num):
-		del deck[x]
+	for x in range(0, num):
+		del deck[0]
 	return hand
 
 # Draw 2 cards
+print('Your hand is :')
+print()
 hand = draw(2)
 for h in hand:
 	h.print()
+
+print()
+print('Bob\'s hand is :')
+print()
+bobHand = draw(2)
+for h in bobHand:
+	h.print()
+
+print()
+print('Alice\'s hand is :')
+print()
+aliceHand = draw(2)
+for h in aliceHand:
+	h.print()
+
+input('Continue to flop')
+
+print()
+print('Flop is :')
+flop = draw(3)
+for f in flop:
+	f.print()
+
+
 
 
 
