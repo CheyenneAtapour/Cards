@@ -62,13 +62,35 @@ aliceHand = draw(2)
 for h in aliceHand:
 	h.print()
 
+print()
 input('Continue to flop')
 
 print()
 print('Flop is :')
+print()
 flop = draw(3)
 for f in flop:
 	f.print()
+
+print()
+input('Continue to turn')
+
+print()
+print('Turn is :')
+print()
+turn = draw(1)
+for t in turn:
+	t.print()
+
+print()
+input('Continue to river')
+
+print()
+print('River is :')
+print()
+river = draw(1)
+for r in river:
+	r.print()
 
 
 
