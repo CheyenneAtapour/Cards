@@ -1,3 +1,5 @@
+import random
+
 class Card:
 	suit: str
 	val: str
@@ -13,13 +15,23 @@ values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 
 suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
 # Generate a standard 52 card deck
-deck = dict()
-index = 0
+deck = []
 for s in suits:
 	for v in values:
-		deck[index] = Card(v, s)
-		index += 1
+		deck.append(Card(v, s))
 
+# Shuffle the deck
+shuffled_deck = []
+while len(shuffled_deck) < 52:
+	index = random.randint(0, len(deck) - 1)
+	shuffled_deck.append(deck[index])
+	del deck[index]
+
+deck = shuffled_deck
+
+# Returns a hand of the drawn cards
+def draw(num=1, deck=deck):
+	pass
 
 
 
