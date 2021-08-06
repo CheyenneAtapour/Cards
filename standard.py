@@ -14,6 +14,10 @@ class Card:
 	def print(self):
 		print(self.name())
 
+def printCards(card_list):
+	for c in card_list:
+		c.print()
+
 values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
 suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
 
@@ -45,22 +49,19 @@ def draw(num=1, deck=deck):
 print('Your hand is :')
 print()
 hand = draw(2)
-for h in hand:
-	h.print()
+printCards(hand)
 
 print()
 print('Bob\'s hand is :')
 print()
 bobHand = draw(2)
-for h in bobHand:
-	h.print()
+printCards(bobHand)
 
 print()
 print('Alice\'s hand is :')
 print()
 aliceHand = draw(2)
-for h in aliceHand:
-	h.print()
+printCards(aliceHand)
 
 print()
 input('Continue to flop')
@@ -69,8 +70,7 @@ print()
 print('Flop is :')
 print()
 flop = draw(3)
-for f in flop:
-	f.print()
+printCards(flop)
 
 print()
 input('Continue to turn')
@@ -79,8 +79,7 @@ print()
 print('Turn is :')
 print()
 turn = draw(1)
-for t in turn:
-	t.print()
+printCards(turn)
 
 print()
 input('Continue to river')
@@ -89,9 +88,12 @@ print()
 print('River is :')
 print()
 river = draw(1)
-for r in river:
-	r.print()
+printCards(river)
 
+print()
+table_cards = flop + turn + river
+
+printCards(table_cards)
 
 
 
