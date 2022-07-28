@@ -1,6 +1,13 @@
 # Calculate the probability that we land on tron by turn 3 or 4 with various mulligan strategies
 # Assume we draw 7 cards and no mulligans
 import random
+import requests
+
+def rng(min, max):
+	source = "https://www.random.org/integers/?num=1&min=" + str(min) + "&max=" + str(max) + "&col=5&base=10&format=plain&rnd=new"
+	number = requests.get(source)
+	number = int(number.text)
+	return number
 
 class Card:
 	name: str
@@ -51,7 +58,8 @@ insert_deck(deck, Card("Ugin, the spirit dragon", 8), 2)
 # Shuffle the deck
 def shuffle(deck=deck):
 	shuffled_deck = []
-	while len(shuffled_deck) < 52:
+	length = len(deck)
+	while len(shuffled_deck) < length:
 		index = random.randint(0, len(deck) - 1)
 		shuffled_deck.append(deck[index])
 		del deck[index]
@@ -75,15 +83,74 @@ def search_hand(hand, name):
 		counter += 1
 	return -1
 
+def check_tron(hand):
+	if search_hand(hand, "Urza's Mine") > 0 and search_hand(hand, "Urza's Power Plant") > 0 and search_hand(hand, "Urza's Tower") > 0:
+		return True
+	else:
+		return False
+
+def check_two_lands(hand):
+	unique_lands = 0
+	if search_hand(hand, "Urza's Mine") > 0:
+		unique_lands += 1
+	if search_hand(hand, "Urza's Power Plant") > 0:
+		unique_lands += 1
+	if search_hand(hand, "Urza's Tower") > 0:
+		unique_lands += 1
+	if unique_lands == 2:
+		return True
+	else:
+		return False
+
+def check_one_land(hand):
+	unique_lands = 0
+	if search_hand(hand, "Urza's Mine") > 0:
+		unique_lands += 1
+	if search_hand(hand, "Urza's Power Plant") > 0:
+		unique_lands += 1
+	if search_hand(hand, "Urza's Tower") > 0:
+		unique_lands += 1
+	if unique_lands == 1:
+		return True
+	else:
+		return False
 
 def card_to_battlefield(hand, position, field):
 	field.append(hand[position])
 	del hand[position]
 
+def simulate_hands(num=10000):
+	tron_counter = 0
+	two_lands = 0
+	one_land = 0
+
+	for x in range(10000):
+		print('Your hand is :')
+		print()
+		hand = draw(7, deck)
+		printCards(hand)
+		print()
+
+		if check_tron(hand):
+			print('found tron')
+			tron_counter += 1
+		elif check_two_lands(hand):
+			two_lands += 1
+		elif check_one_land(hand):
+			one_land += 1
+
+		# Put back cards and shuffle deck
+		deck = deck + hand
+		deck = shuffle(deck)
+
+	print("Over 10k hands, had " + str(tron_counter) + " hands with tron assembled (no mulligans)")
+	print("Hands with 2 unique lands " + str(two_lands))
+	print("Hands with 1 unique land " + str(one_land))
+
 
 print('Your hand is :')
 print()
-hand = draw(7)
+hand = draw(7, deck)
 printCards(hand)
 print()
 
